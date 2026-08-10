@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fast Giphy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <input id="search" type="text" placeholder="Search GIFs…" autocomplete="off" spellcheck="false" />
+    <button id="settings-btn" title="Settings">⚙</button>
+  </header>
+
+  <main id="results" aria-live="polite">
+    <div id="grid"></div>
+    <div id="sentinel"></div>
+    <div id="status"></div>
+  </main>
+
+  <section id="setup" hidden>
+    <h2>Giphy API key</h2>
+    <p>Grab a free key at <code>developers.giphy.com</code>, then paste it here.</p>
+    <input id="key-input" type="text" placeholder="API key" autocomplete="off" spellcheck="false" />
+    <button id="key-save">Save</button>
+    <button id="key-cancel" hidden>Cancel</button>
+    <button id="quit">Quit Fast Giphy</button>
+  </section>
+
+  <div id="toast" hidden>Link copied</div>
+
+  <script src="app.js"></script>
+</body>
+</html>

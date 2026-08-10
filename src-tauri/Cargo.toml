@@ -1,0 +1,26 @@
+[package]
+name = "fast-giphy"
+version = "2.0.0"
+description = "Menu bar GIF search that copies Giphy links to your clipboard"
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "fast_giphy_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = ["config-json"] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png", "macos-private-api"] }
+tauri-plugin-clipboard-manager = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

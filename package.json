@@ -1,0 +1,14 @@
+{
+  "name": "fast-giphy",
+  "version": "2.0.0",
+  "description": "Menu bar GIF search that copies Giphy links to your clipboard",
+  "private": true,
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.4"
+  }
+}

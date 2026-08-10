@@ -1,0 +1,180 @@
+:root {
+  --bg: rgba(28, 28, 30, 0.72);
+  --fg: #f2f2f7;
+  --muted: #98989f;
+  --field: rgba(120, 120, 128, 0.24);
+  --accent: #0a84ff;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: rgba(250, 250, 252, 0.72);
+    --fg: #1c1c1e;
+    --muted: #6c6c70;
+    --field: rgba(120, 120, 128, 0.12);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  backdrop-filter: blur(30px) saturate(180%);
+  color: var(--fg);
+  font: 13px -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  overflow: hidden;
+  border-radius: 10px;
+  user-select: none;
+}
+
+header {
+  display: flex;
+  gap: 6px;
+  padding: 10px;
+  flex: 0 0 auto;
+}
+
+#search {
+  flex: 1;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 7px;
+  background: var(--field);
+  color: var(--fg);
+  font-size: 13px;
+  outline: none;
+}
+
+#search::placeholder { color: var(--muted); }
+
+#search:focus { box-shadow: 0 0 0 2px var(--accent); }
+
+#settings-btn {
+  border: none;
+  background: var(--field);
+  color: var(--fg);
+  border-radius: 7px;
+  width: 30px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 10px 10px;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.tile {
+  position: relative;
+  border: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--field);
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tile:hover { box-shadow: 0 0 0 2px var(--accent); }
+
+.tile.copied::after {
+  content: "Copied";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 132, 255, 0.85);
+  color: #fff;
+  font-weight: 600;
+}
+
+#status {
+  padding: 12px 0;
+  text-align: center;
+  color: var(--muted);
+  min-height: 18px;
+}
+
+#sentinel { height: 1px; }
+
+#setup {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* The id selector above outranks the UA [hidden] rule, so restate it here. */
+#setup[hidden] { display: none; }
+
+#setup h2 { margin: 0; font-size: 15px; }
+#setup p { margin: 0; color: var(--muted); line-height: 1.4; }
+
+#setup input {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 7px;
+  background: var(--field);
+  color: var(--fg);
+  font-size: 13px;
+  outline: none;
+}
+
+#setup button {
+  padding: 8px;
+  border: none;
+  border-radius: 7px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#setup #key-cancel,
+#setup #quit {
+  background: var(--field);
+  color: var(--fg);
+}
+
+#setup #quit { margin-top: auto; }
+
+#toast {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  pointer-events: none;
+}

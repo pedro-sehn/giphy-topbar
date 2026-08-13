@@ -120,6 +120,10 @@ async function loadPage() {
     if (!res.ok) {
       if (res.status === 401 || res.status === 403) {
         setStatus('Invalid API key.');
+        // Bump the generation so the finally block does not immediately retry
+        // with the same rejected key and re-open this modal in a loop.
+        state.generation += 1;
+        state.loading = false;
         showSetup(true);
         return;
       }
